@@ -36,7 +36,7 @@
         "properties": false
       }
     ],
-    "no-console": "error",
+    "no-console": "warn",
     "no-negated-condition": "off",
     "object-curly-spacing": [
       "error",

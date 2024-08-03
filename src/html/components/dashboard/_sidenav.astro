@@ -368,6 +368,35 @@ const htmlPath = convertPathToHtml(path);
           </a>
         </li>
         <li class="nav-item">
+          <a href="#" class="nav-link">
+            <i class="nav-icon bi bi-window"></i>
+            <p>
+              IFrame Navigation
+              <i class="nav-arrow bi bi-chevron-right"></i>
+            </p>
+          </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item">
+              <a
+                href={htmlPath + "/iframe.html"}
+                class:list={["nav-link", page === "iframe" && "active"]}
+                data-lte-disable="iframe">
+                <i class="nav-icon bi bi-window"></i>
+                <p>Basic Example</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a
+                href={htmlPath + "/iframe2.html"}
+                class:list={["nav-link", page === "iframe2" && "active"]}
+                data-lte-disable="iframe">
+                <i class="nav-icon bi bi-window"></i>
+                <p>With Page Content</p>
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item">
           <a
             href={htmlPath + "/docs/color-mode.html"}
             class:list={["nav-link", page === "color-mode" && "active"]}
@@ -427,6 +456,15 @@ const htmlPath = convertPathToHtml(path);
               >
                 <i class="nav-icon bi bi-circle"></i>
                 <p>Treeview</p>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a
+                href={htmlPath + "/docs/javascript/toasts.html"}
+                class:list={["nav-link", page === "toasts" && "active"]}
+              >
+                <i class="nav-icon bi bi-circle"></i>
+                <p>Toasts</p>
               </a>
             </li>
           </ul>

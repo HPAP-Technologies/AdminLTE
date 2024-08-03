@@ -1,0 +1,101 @@
+---
+import Head from "@components/_head.astro";
+import Footer from "@components/dashboard/_footer.astro";
+import Topbar from "@components/dashboard/_topbar.astro";
+import IFrameEngine from "@components/iframeengine.mdx";
+import Sidenav from "@components/dashboard/_sidenav.astro";
+import Scripts from "@components/_scripts.astro";
+
+const title = "IFrame Navigation Plugin | AdminLTE 4";
+const path = ".../../dist";
+const mainPage = "javascript";
+const page = "iframe";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<!--begin::Head-->
+
+<head>
+
+  <Head title={title} path={path} />
+</head>
+<!--end::Head-->
+<!--begin::Body-->
+
+<body class="layout-fixed sidebar-expand-lg bg-body-tertiary">
+  <!--begin::App Wrapper-->
+  <div class="app-wrapper">
+    <Topbar path={path} />
+    <Sidenav path={path} mainPage={mainPage} page={page} />
+    <!--begin::App Main-->
+    <main class="app-main iframe-mode">
+      <nav class="navbar navbar-expand navbar-white navbar-light border-bottom p-0 iframe-nav">
+        <div class="container-fluid ps-0">
+          <div class="collapse navbar-collapse">
+            <div class=" btn-group">
+              <button type="button" class="btn btn-danger dropdown-toggle rounded-0 p-2" data-bs-toggle="dropdown" aria-expanded="false">
+                Close
+              </button> 
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="#" data-lte-widget="iframe-close" data-lte-type="all">Close All</a></li>
+                <li><a class="dropdown-item" href="#" data-lte-widget="iframe-close" data-lte-type="all-other">Close All Other</a></li>
+              </ul>
+            </div>
+            <a class="nav-link bg-light ms-2" href="#" data-lte-widget="iframe-scrollleft"><i class="bi bi-chevron-double-left"></i></a>
+            <nav class="me-auto mb-2 mb-lg-0">
+              <div class="navbar-nav nav nav-tabs">
+                <button class="nav-link active" id="home-tab" data-lte-widget="iframe-page-content" type="button" aria-controls="home-tab-pane" aria-selected="true">Page Content</button>
+              </div>
+            </nav>
+            <a class="nav-link bg-light ms-2" href="#" data-lte-widget="iframe-scrollright"><i class="bi bi-chevron-double-right"></i></a>
+            <a class="nav-link bg-light ms-2" href="#" data-lte-widget="iframe-fullscreen"><i class="bi bi-arrows-fullscreen"></i></a>
+          </div>
+        </div>
+      </nav>
+      <!--end::App Content-->
+      <div class="tab-content">
+        <div class="tab-empty text-center d-none">
+          <h2 class="display-4">
+            No tab selected
+          </h2>
+        </div>
+        <div class="tab-loading">
+          <div class="m-auto text-center">
+            <h2 class="display-4">Tab is loading</h2>
+            <div class="spinner-grow" style="width: 5rem; height: 5rem;" role="status">
+              <span class="visually-hidden">Loading...</span>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane fade iframe-page-content show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" data-lte-widget="iframe-page-content">
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Tab 1</h3>
+            </div>
+            <div class="card-body">
+              <p>
+                <IFrameEngine />
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <!--end::App Main-->
+    <!--end::App Main-->
+    <Footer />
+  </div>
+  <!--end::App Wrapper-->
+  <!--begin::Script-->
+  <Scripts path={path} />
+  <!-- Page specific script -->
+   <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      new adminlte.IFrameEngine(document.body).init();
+    });
+    </script>
+  <!--end::Script-->
+</body>
+<!--end::Body-->
+</html>

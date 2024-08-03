@@ -2,6 +2,87 @@
 // Toast
 //
 
+.toasts-top-right {
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: $zindex-toast;
+
+  &.fixed {
+    position: fixed;
+  }
+}
+
+.toasts-top-left {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: $zindex-toast;
+
+  &.fixed {
+    position: fixed;
+  }
+}
+
+.toasts-bottom-right {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  z-index: $zindex-toast;
+
+  &.fixed {
+    position: fixed;
+  }
+}
+
+.toasts-bottom-left {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: $zindex-toast;
+
+  &.fixed {
+    position: fixed;
+  }
+}
+
+.toasts-top-middle {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  z-index: $zindex-toast;
+  transform: translateX(-50%);
+
+  &.fixed {
+    position: fixed;
+  }
+}
+
+.toasts-bottom-middle {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  z-index: $zindex-toast;
+  transform: translateX(-50%);
+
+  &.fixed {
+    position: fixed;
+  }
+}
+
+.toasts-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: $zindex-toast;
+  transform: translate(-50%, -50%);
+
+  &.fixed {
+    position: fixed;
+  }
+}
+
+
 @each $name, $color in $theme-colors {
   .toast-#{$name} {
     --#{$prefix}toast-header-color: #{color-contrast($color)};
@@ -31,3 +112,4 @@
     }
   }
 }
+

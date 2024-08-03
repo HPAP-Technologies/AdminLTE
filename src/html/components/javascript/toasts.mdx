@@ -1,0 +1,92 @@
+## Toast Configuration and Enums
+
+### Example
+```js
+  document.querySelector('.toastsDefaultDefault').addEventListener('click', function() {
+    adminlte.Toasts.createToast({
+        message: 'This is a toast message',
+        title: 'Toast Title',
+      });
+  })
+
+  document.querySelector('.toastsDefaultDefault').addEventListener('click', function() {
+    adminlte.Toasts.createToast('This is a toast message');
+  })
+
+  document.querySelector('.toastsDefaultDefault').addEventListener('click', function() {
+    adminlte.Toasts.createToast('This is a toast message', 'Toast Title');
+  })
+```
+
+
+### ToastConfig Interface
+
+The `ToastConfig` interface defines the configuration options available for creating a toast. Here is a description of each property:
+
+| Property          | Type                                 | Description                                       |
+|-------------------|--------------------------------------|---------------------------------------------------|
+| `message`         | `string`                             | The message to display in the toast               |
+| `title`           | `string \| undefined`                | The title to display in the toast                 |
+| `smallTitle`      | `string \| undefined`                | The small title to display in the toast           |
+| `icon`            | `string \| undefined`                | The icon to display in the toast                  |
+| `iconColor`       | `string \| undefined`                | The icon color to display in the toast            |
+| `showCloseButton` | `boolean \| undefined`               | Whether to show the close button                  |
+| `autohide`        | `boolean \| undefined`               | Whether to autohide the toast                     |
+| `autoRemove`      | `boolean \| undefined`               | Whether to remove the toast after hiding          |
+| `delay`           | `number \| undefined`                | The delay before autohiding the toast             |
+| `position`        | `ToastPosition \| HTMLElement \| undefined` | The position of the toast. This can be a string or an HTMLElement |
+| `top`             | `string \| undefined`                | The top position of the toast required for absolute positioning |
+| `right`           | `string \| undefined`                | The right position of the toast required for absolute positioning |
+| `bottom`          | `string \| undefined`                | The bottom position of the toast required for absolute positioning |
+| `left`            | `string \| undefined`                | The left position of the toast required for absolute positioning |
+| `transform`       | `string \| undefined`                | The transform of the toast required for absolute positioning |
+| `width`           | `string \| undefined`                | The width of the toast                            |
+| `height`          | `string \| undefined`                | The height of the toast                           |
+
+
+### ToastContainer Enum
+
+The `ToastContainer` enum defines the available selectors for predefined toast container positions:
+
+| Property         | Value                        |
+|------------------|------------------------------|
+| `TopLeft`        | `#toastsContainerTopLeft`    |
+| `TopMiddle`      | `#toastsContainerTopMiddle`  |
+| `TopRight`       | `#toastsContainerTopRight`   |
+| `BottomLeft`     | `#toastsContainerBottomLeft` |
+| `BottomMiddle`   | `#toastsContainerBottomMiddle`|
+| `BottomRight`    | `#toastsContainerBottomRight`|
+
+These selectors correspond to the different positions where toast containers can be placed within the document.
+
+### ToastClassName Enum
+
+The `ToastClassName` enum provides the class names for styling toasts based on their position:
+
+| Property         | Value                  |
+|------------------|------------------------|
+| `TopRight`       | `toasts-top-right`     |
+| `TopMiddle`      | `toasts-top-middle`    |
+| `TopLeft`        | `toasts-top-left`      |
+| `BottomRight`    | `toasts-bottom-right`  |
+| `BottomMiddle`   | `toasts-bottom-middle` |
+| `BottomLeft`     | `toasts-bottom-left`   |
+
+These class names are used to apply specific styles to toasts based on their position.
+
+### ToastPosition Enum
+
+The `ToastPosition` enum defines the possible positions for displaying toasts:
+
+| Property         | Value          |
+|------------------|----------------|
+| `TopRight`       | `topRight`     |
+| `TopMiddle`      | `topMiddle`    |
+| `TopLeft`        | `topLeft`      |
+| `Center`         | `center`       |
+| `BottomRight`    | `bottomRight`  |
+| `BottomMiddle`   | `bottomMiddle` |
+| `BottomLeft`     | `bottomLeft`   |
+| `Absolute`       | `absolute`     |
+
+These positions can be used to specify where the toast should appear on the screen. The `Absolute` position allows for custom placement using absolute positioning.

@@ -1,0 +1,144 @@
+body.iframe-mode {
+  .app-sidebar,
+  .app-header,
+  .app-footer {
+    display: none;
+  }
+}
+
+body.iframe-mode-fullscreen {
+  overflow: hidden;
+
+  .app-sidebar,
+  .app-header,
+  .app-footer {
+    display: none;
+  }
+
+  &.app-main {
+    margin-top: 0 !important;
+  }
+}
+
+.iframe-mode {
+  // stylelint-disable function-disallowed-list
+  height: calc(100% - .2rem) !important;
+  // stylelint-enable function-disallowed-list
+  overflow: scroll !important;
+
+  .app-wrapper {
+    max-height: 100vh;
+  }
+
+  .btn-iframe-close {
+    position: relative;
+    top: -.625rem;
+    right: -.825rem;
+    z-index: $zindex-sticky;
+    line-height: 1;
+    color: shade-color($danger, 70%);
+    visibility: hidden;
+
+    &:hover,
+    &:focus,
+    &.active {
+      visibility: visible !important;
+      animation-name: $lte-transition-fn;
+      animation-duration: $lte-transition-speed;
+      animation-fill-mode: both;
+    }
+  }
+
+  >.nav {
+    overflow-y: scroll;
+  }
+
+  >.navbar-nav {
+    width: 100%;
+    overflow-y: scroll;
+
+    .nav-link {
+      white-space: nowrap;
+
+      &:hover,
+      &:focus {
+        .btn-iframe-close {
+          visibility: visible;
+          animation-name: $lte-transition-fn;
+          animation-duration: $lte-transition-speed;
+          animation-fill-mode: both;
+        }
+      }
+    }
+
+    .nav-item {
+      position: relative;
+    }
+  }
+
+  >.tab-content {
+    position: relative;
+    height: 100%;
+  }
+
+  .tab-pane {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    display: none;
+    height: 100% !important;
+    overflow: scroll;
+
+    &.active {
+      display: block;
+    }
+  }
+
+  .tab-empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .tab-loading {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: $zindex-fixed + 1;
+    width: 100%;
+    height: 100%;
+    background-color: $body-bg;
+  }
+
+  iframe {
+    width: 100%;
+    height: 100%;
+    margin-bottom: -8px;
+    border: 0;
+  }
+
+  body.iframe-mode-fullscreen & {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: $lte-zindex-sidebar + 10;
+    height: 100%;
+    min-height: 100%;
+    margin-left: 0 !important;
+  }
+}
+
+@if $enable-dark-mode {
+  @include color-mode(dark) {
+    .content-wrapper.iframe-mode {
+      .tab-loading {
+        background-color: $dark;
+      }
+    }
+  }
+}

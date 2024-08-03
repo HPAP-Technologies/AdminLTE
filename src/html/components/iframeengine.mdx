@@ -1,0 +1,59 @@
+## IFrame Navigation
+
+This is an example of the plugin with page content.
+
+### Example Usage
+
+Basic example of usage. Use the IFrame.html as an example. The page's main .app-class will need the class .iframe-mode assigned to it. Along with this content.
+
+```html
+<main class="app-main iframe-mode">
+    <nav class="navbar navbar-expand navbar-white navbar-light border-bottom p-0 iframe-nav">
+        <div class="container-fluid ps-0">
+            <div class="collapse navbar-collapse">
+                <div class=" btn-group">
+                    <button type="button" class="btn btn-danger dropdown-toggle rounded-0 p-2" data-bs-toggle="dropdown" aria-expanded="false">
+                    Close
+                    </button> 
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="#" data-lte-widget="iframe-close" data-lte-type="all">Close All</a></li>
+                        <li><a class="dropdown-item" href="#" data-lte-widget="iframe-close" data-lte-type="all-other">Close All Other</a></li>
+                    </ul>
+                </div>
+                <a class="nav-link bg-light ms-2" href="#" data-lte-widget="iframe-scrollleft"><i class="bi bi-chevron-double-left"></i></a>
+                <nav class="me-auto mb-2 mb-lg-0">
+                    <div class="navbar-nav nav nav-tabs"></div>
+                </nav>
+                <a class="nav-link bg-light ms-2" href="#" data-lte-widget="iframe-scrollright"><i class="bi bi-chevron-double-right"></i></a>
+                <a class="nav-link bg-light ms-2" href="#" data-lte-widget="iframe-fullscreen"><i class="bi bi-arrows-fullscreen"></i></a>
+            </div>
+        </div>
+    </nav>
+    <!--end::App Content-->
+    <div class="tab-content">
+        <div class="tab-empty text-center d-none">
+            <h2 class="display-4">
+            No tab selected
+            </h2>
+        </div>
+        <div class="tab-loading">
+            <div class="m-auto text-center">
+            <h2 class="display-4">Tab is loading</h2>
+            <div class="spinner-grow" style="width: 5rem; height: 5rem;" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            </div>
+        </div>
+    </div>
+</main>
+```
+Then simplly initialize the Engine at the bottom of the page.
+
+```js
+const IFrames = new adminlte.IFrameEngine();
+
+// To initialize the system.
+document.addEventListener("DOMContentLoaded", function () {
+    IFrames.init();
+});
+```

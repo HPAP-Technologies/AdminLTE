@@ -1,0 +1,338 @@
+---
+import Head from "@components/_head.astro";
+import Footer from "@components/dashboard/_footer.astro";
+import Topbar from "@components/dashboard/_topbar.astro";
+import Toasts from "@components/javascript/toasts.mdx";
+import Sidenav from "@components/dashboard/_sidenav.astro";
+import Scripts from "@components/_scripts.astro";
+
+const title = "Toasts Plugin | AdminLTE 4";
+const path = "../../../../dist";
+const mainPage = "javascript";
+const page = "toasts";
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<!--begin::Head-->
+
+<head>
+
+  <Head title={title} path={path} />
+</head>
+<!--end::Head-->
+<!--begin::Body-->
+
+<body class="layout-fixed sidebar-expand-lg bg-body-tertiary">
+  <!--begin::App Wrapper-->
+  <div class="app-wrapper">
+    <Topbar path={path} />
+    <Sidenav path={path} mainPage={mainPage} page={page} />
+    <!--begin::App Main-->
+    <main class="app-main">
+      <!--begin::App Content Header-->
+      <div class="app-content-header">
+        <!--begin::Container-->
+        <div class="container-fluid">
+          <!--begin::Row-->
+          <div class="row">
+            <div class="col-sm-6">
+              <h3 class="mb-0">Toasts Plugin</h3>
+            </div>
+            <div class="col-sm-6">
+              <ol class="breadcrumb float-sm-end">
+                <li class="breadcrumb-item"><a href="#">Docs</a></li>
+                <li class="breadcrumb-item active" aria-current="page">
+                  Toasts Plugin
+                </li>
+              </ol>
+            </div>
+          </div>
+          <!--end::Row-->
+        </div>
+        <!--end::Container-->
+      </div>
+      <!--end::App Content Header-->
+      <!--begin::App Content-->
+      <div class="app-content">
+        <!--begin::Container-->
+        <div class="container-fluid">
+          <!--begin::Row-->
+          <div class="row g-4 mb-4">
+            <div class="col-md-12">
+              <div class="card card-info card-outline">
+                <div class="card-header">
+                  <h3 class="card-title">
+                    <i class="fas fa-edit"></i>
+                    Toasts Examples <small>built in AdminLTE</small>
+                  </h3>
+                </div>
+                <div class="card-body">
+                  <button type="button" class="btn btn-outline-primary mb-2 toastsDefaultDefault">
+                    Launch Default Toast
+                  </button>
+                  <button type="button" class="btn btn-outline-primary mb-2 toastsDefaultFull">
+                    Launch Full Toast (with icon)
+                  </button>
+                  <button type="button" class="btn btn-outline-primary mb-2 toastsDefaultAutohide">
+                    Launch Default Toasts with autohide
+                  </button>
+                  <button type="button" class="btn btn-outline-primary mb-2 toastsDefaultMessageOnly">
+                    Launch Default Toasts with message only
+                  </button>
+                  <br>
+                  <br>
+                  <button type="button" class="btn btn-outline-primary mb-2 toastsDefaultTopLeft">
+                    Launch Default Toast (topLeft)
+                  </button>
+                  <button type="button" class="btn btn-outline-primary mb-2 toastsDefaultTopMiddle">
+                    Launch Default Toast (topMiddle)
+                  </button>
+                  <button type="button" class="btn btn-outline-primary mb-2 toastsDefaultTopRight">
+                    Launch Default Toast (topRight)
+                  </button>
+                  <button type="button" class="btn btn-outline-primary mb-2 toastsDefaultAbsolute">
+                    Launch Default Toast (absolute position)
+                  </button>
+                  <br>
+                  <br>
+                  <button type="button" class="btn btn-outline-primary mb-2 toastsDefaultBottomLeft">
+                    Launch Default Toast (botomLeft)
+                  </button>
+                  <button type="button" class="btn btn-outline-primary mb-2 toastsDefaultBottomMiddle">
+                    Launch Default Toast (bottomMiddle)
+                  </button>
+                  <button type="button" class="btn btn-outline-primary mb-2 toastsDefaultBottomRight">
+                    Launch Default Toast (bottomRight)
+                  </button>
+                  <button type="button" class="btn btn-outline-primary mb-2 toastsDefaultCustomTarget">
+                    Launch Default Toast (custom container target)
+                  </button>
+                  <br>
+                  <br>
+                  <button type="button" class="btn btn-primary toastsDefaultPrimary">
+                    Launch Primary Toast
+                  </button>
+                  <button type="button" class="btn btn-secondary toastsDefaultSecondary">
+                    Launch Secondary Toast
+                  </button>
+                  <button type="button" class="btn btn-success toastsDefaultSuccess">
+                    Launch Success Toast
+                  </button>
+                  <button type="button" class="btn btn-info toastsDefaultInfo">
+                    Launch Info Toast
+                  </button>
+                  <button type="button" class="btn btn-warning toastsDefaultWarning">
+                    Launch Warning Toast
+                  </button>
+                  <button type="button" class="btn btn-danger toastsDefaultDanger">
+                    Launch Danger Toast
+                  </button>
+                  <button type="button" class="btn btn-dark toastsDefaultDark">
+                    Launch Dark Toast
+                  </button>
+                  <button type="button" class="btn btn-light toastsDefaultLight">
+                    Launch Light Toast
+                  </button>
+                  <div class="row">
+                    <p class="text-muted mt-4">
+                      Target for custom container toast
+                    </p>
+                    <div class="custom-target overflow-scroll border border-3 col-4" style="height: 200px;"></div>
+                  </div>
+                  <div class="row">
+                    <div class="col-12">
+                      <Toasts />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--end::Container-->
+      </div>
+      <!--end::App Content-->
+    </main>
+    <!--end::App Main-->
+    <Footer />
+  </div>
+  <!--end::App Wrapper-->
+  <!--begin::Script-->
+  <Scripts path={path} />
+  <!-- Page specific script -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      document.querySelector('.toastsDefaultDefault').addEventListener('click', function () {
+        adminlte.Toasts.createToast({
+          message: 'This is a toast message',
+          title: 'Toast Title',
+        });
+      })
+
+      document.querySelector('.toastsDefaultFull').addEventListener('click', function () {
+        adminlte.Toasts.createToast({
+          message: 'This is a toast message',
+          title: 'Toast Title',
+          icon: 'bi bi-circle-square',
+          iconColor: 'success',
+        });
+      });
+
+      document.querySelector('.toastsDefaultAutohide').addEventListener('click', function () {
+        adminlte.Toasts.createToast({
+          message: 'This is a toast message',
+          title: 'Toast Title',
+          smallTitle: 'small title',
+          autohide: true,
+          delay: 5000,
+        });
+      });
+
+      document.querySelector('.toastsDefaultMessageOnly').addEventListener('click', function () {
+        adminlte.Toasts.createToast('This is a toast message');
+      });
+
+      document.querySelector('.toastsDefaultTopLeft').addEventListener('click', function () {
+        adminlte.Toasts.createToast({
+          message: 'This is a toast message',
+          title: 'Toast Title',
+          position: 'topLeft',
+        });
+      });
+
+      document.querySelector('.toastsDefaultTopMiddle').addEventListener('click', function () {
+        adminlte.Toasts.createToast({
+          message: 'This is a toast message',
+          title: 'Toast Title',
+          position: 'topMiddle',
+        });
+      });
+
+      document.querySelector('.toastsDefaultTopRight').addEventListener('click', function () {
+        adminlte.Toasts.createToast({
+          message: 'This is a toast message',
+          title: 'Toast Title',
+          position: 'topRight',
+        });
+      });
+
+      document.querySelector('.toastsDefaultAbsolute').addEventListener('click', function () {
+        adminlte.Toasts.createToast({
+          message: 'This is a toast message',
+          title: 'Toast Title',
+          position: 'absolute',
+          top: '100px',
+          right: '100px',
+        });
+      });
+
+      document.querySelector('.toastsDefaultBottomLeft').addEventListener('click', function () {
+        adminlte.Toasts.createToast({
+          message: 'This is a toast message',
+          title: 'Toast Title',
+          position: 'bottomLeft',
+        });
+      });
+
+      document.querySelector('.toastsDefaultBottomMiddle').addEventListener('click', function () {
+        adminlte.Toasts.createToast({
+          message: 'This is a toast message',
+          title: 'Toast Title',
+          position: 'bottomMiddle',
+        });
+      });
+
+      document.querySelector('.toastsDefaultBottomRight').addEventListener('click', function () {
+        adminlte.Toasts.createToast({
+          message: 'This is a toast message',
+          title: 'Toast Title',
+          position: 'bottomRight',
+        });
+      });
+
+      document.querySelector('.toastsDefaultCustomTarget').addEventListener('click', function () {
+        adminlte.Toasts.createToast({
+          message: 'This is a toast message',
+          title: 'Toast Title',
+          position: document.querySelector('.custom-target'),
+        });
+      });
+
+      document.querySelector('.toastsDefaultPrimary').addEventListener('click', function () {
+        adminlte.Toasts.createToast({
+          message: 'This is a toast message',
+          title: 'Toast Title',
+          icon: 'bi bi-circle',
+          className: 'toast-primary',
+        });
+      });
+
+      document.querySelector('.toastsDefaultSecondary').addEventListener('click', function () {
+        adminlte.Toasts.createToast({
+          message: 'This is a toast message',
+          title: 'Toast Title',
+          icon: 'bi bi-circle',
+          className: 'toast-secondary',
+        });
+      });
+
+      document.querySelector('.toastsDefaultSuccess').addEventListener('click', function () {
+        adminlte.Toasts.createToast({
+          message: 'This is a toast message',
+          title: 'Toast Title',
+          icon: 'bi bi-check-circle',
+          className: 'toast-success',
+        });
+      });
+
+      document.querySelector('.toastsDefaultInfo').addEventListener('click', function () {
+        adminlte.Toasts.createToast({
+          message: 'This is a toast message',
+          title: 'Toast Title',
+          icon: 'bi bi-info-circle',
+          className: 'toast-info',
+        });
+      });
+
+      document.querySelector('.toastsDefaultWarning').addEventListener('click', function () {
+        adminlte.Toasts.createToast({
+          message: 'This is a toast message',
+          title: 'Toast Title',
+          icon: 'bi bi-exclamation-triangle',
+          className: 'toast-warning',
+        });
+      });
+
+      document.querySelector('.toastsDefaultDanger').addEventListener('click', function () {
+        adminlte.Toasts.createToast({
+          message: 'This is a toast message',
+          title: 'Toast Title',
+          icon: 'bi bi-x-circle',
+          className: 'toast-danger',
+        });
+      });
+
+      document.querySelector('.toastsDefaultDark').addEventListener('click', function () {
+        adminlte.Toasts.createToast({
+          message: 'This is a toast message',
+          title: 'Toast Title',
+          icon: 'bi bi-moon',
+          className: 'toast-dark',
+        });
+      });
+
+      document.querySelector('.toastsDefaultLight').addEventListener('click', function () {
+        adminlte.Toasts.createToast({
+          message: 'This is a toast message',
+          title: 'Toast Title',
+          icon: 'bi bi-sun',
+          className: 'toast-light',
+        });
+      });
+    })
+  </script>
+  <!--end::Script-->
+</body><!--end::Body-->
+
+</html>
