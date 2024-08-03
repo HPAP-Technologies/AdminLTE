@@ -1,0 +1,134 @@
+// Define switch sizes and margins in em
+$switch-sm-height: 1.25rem !default; // Height for small switch
+$switch-sm-width: $switch-sm-height + 1rem !default;
+$switch-md-height: 1.5rem !default;
+$switch-md-width: $switch-md-height + 1.25rem !default;
+$switch-lg-height: 1.75rem !default;
+$switch-lg-width: $switch-lg-height + 1.5rem !default;
+$switch-xl-height: 2rem !default;
+$switch-xl-width: $switch-xl-height + 1.75rem !default;
+
+// Margins in em
+$switch-sm-margin-bottom: .5em !default;
+$switch-md-margin-bottom: 1em !default;
+$switch-lg-margin-bottom: 1.5em !default;
+$switch-xl-margin-bottom: 2em !default;
+
+$switch-color-map: (
+  $colors,
+  $grays,
+  $blues,
+  $indigos,
+  $purples,
+  $pinks,
+  $reds,
+  $oranges,
+  $yellows,
+  $greens,
+  $teals,
+  $cyans,
+  $theme-colors
+) !default;
+
+// Define the styles
+.form-check-input {
+  clear: left;
+}
+
+.form-switch {
+  &.form-switch-sm,
+  &.fs-sm {
+    margin-bottom: $switch-sm-margin-bottom;
+    .form-check-input {
+      width: $switch-sm-width;
+      height: $switch-sm-height;
+      @include border-radius($switch-sm-height);
+    }
+  }
+
+  &.form-switch-md,
+  &.fs-md {
+    margin-bottom: $switch-md-margin-bottom;
+    .form-check-input {
+      width: $switch-md-width;
+      height: $switch-md-height;
+      @include border-radius($switch-md-height);
+    }
+  }
+
+  &.form-switch-lg,
+  &.fs-lg {
+    margin-bottom: $switch-lg-margin-bottom;
+    .form-check-input {
+      width: $switch-lg-width;
+      height: $switch-lg-height;
+      @include border-radius($switch-lg-height);
+    }
+  }
+
+  &.form-switch-xl,
+  &.fs-xl {
+    margin-bottom: $switch-xl-margin-bottom;
+    .form-check-input {
+      width: $switch-xl-width;
+      height: $switch-xl-height;
+      @include border-radius($switch-xl-height);
+    }
+  }
+}
+
+// Generate switch color classes
+@each $color-group in $switch-color-map {
+  // Ensure we don't generate classes for colors that are not suitable for switches
+  @each $color-name, $color-value in $color-group {
+    .form-switch-checked-#{$color-name},
+    .fs-c-#{$color-name} {
+      .form-check-input {
+        &:checked {
+          background-color: $color-value;
+          border-color: $color-value;
+        }
+      }
+    }
+    .form-switch-#{$color-name},
+    .fs-#{$color-name} {
+      .form-check-input {
+        background-color: $color-value;
+        border-color: $color-value;
+      }
+    }
+    .form-switch-dot-#{$color-name},
+    .fs-d-#{$color-name} {
+      .form-check-input {
+        $color: rgba($color-value, .95) !default;
+        background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='#{$color}'/></svg>") !important;
+      }
+    }
+  }
+}
+
+.form-switch-checked-white,
+.fs-c-white,
+.form-switch-white,
+.fs-white,
+.form-switch-checked-light,
+.fs-c-light,
+.form-switch-light,
+.fs-light {
+  .form-check-input {
+    $color: rgba($dark, .25) !default;
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='#{$color}'/></svg>");
+    border-color: $color;
+  }
+}
+
+.form-switch-checked-dark,
+.fs-c-dark,
+.form-switch-dark,
+.fs-dark {
+  .form-check-input {
+    $color: rgba($light, .25) !default;
+    background-image: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='-4 -4 8 8'><circle r='3' fill='#{$color}'/></svg>");
+    border-color: $light;
+  }
+}
